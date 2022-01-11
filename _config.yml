@@ -108,9 +108,9 @@ author:
   location         : "Seoul, South Korea"
   email            : "duk9741@gmail.com"
   links:
-    - label: "Email"
-      icon: "fas fa-fw fa-envelope-square"
-      url: "mailto:duk9741@gmail.com"
+    # - label: "Email"
+    #   icon: "fas fa-fw fa-envelope-square"
+    #   url: "mailto:duk9741@gmail.com"
     - label: "Website"
       icon: "fas fa-fw fa-link"
       url: "https://dukcode.github.io"
