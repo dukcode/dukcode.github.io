@@ -1,6 +1,6 @@
 ---
 layout: single
-title: "gist에서 commit하면 잔디가 안쌓일 때"
+title: "[gist] gist에서 commit하면 잔디가 안쌓일 때"
 categories: tools
 tag: [github, gist, tip]
 toc: true
@@ -10,8 +10,6 @@ sidebar:
   nav: "docs"
 search: true
 ---
-
-# gist에서 github repository로 복제
 
 ## 개요
 gist는 좋은 툴이지만 gist에서 commit하고 push를 하면 github profile에 잔디가 쌓이지 않는 단점이 있다.:cry: 그럴땐 gist에 저장된 내용을 github에 복제해 잔디를 쌓을 수 있다.
