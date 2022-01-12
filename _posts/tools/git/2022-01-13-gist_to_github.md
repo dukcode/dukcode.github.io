@@ -33,7 +33,7 @@ gist는 좋은 툴이지만 gist에서 commit하고 push를 하면 github profil
 origin https://gist.github.com/[xxxxxxxxxxxxxxxxxxxxxxxxxxx].git (fetch)
 origin https://gist.github.com/[xxxxxxxxxxxxxxxxxxxxxxxxxxx].git (push)
 ```
-위와 같이 입력하면  자신의 gist주소에 origin(또는 자신이 지정한 이름)이라는 이름으로 remote가 되어있는 것을 볼 수있다.\
+위와 같이 입력하면  자신의 gist주소에 origin(또는 자신이 지정한 이름)이라는 이름으로 remote가 되어있는 것을 볼 수있다.  
 
 새로운 github 레포지토리를 생성하고 주소를 복사한다.\
 (외부에 공개하기 싫다면 private 레포지토리를 만들어라)
