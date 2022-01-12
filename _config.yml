@@ -103,7 +103,7 @@ analytics:
 # Site Author
 author:
   name             : "DUKCODE"
-  avatar           : # path of avatar image, e.g. "/assets/images/bio-photo.jpg"
+  avatar           : "/assets/images/bio-photo.png"
   bio              : "DUKCODE의 블로그입니다"
   location         : "Seoul, South Korea"
   email            : "duk9741@gmail.com"
