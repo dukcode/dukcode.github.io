@@ -2,7 +2,7 @@
 layout: single
 title: "[JAVA] clone()의 내부 구현 추측"
 categories: java
-tag: [java]
+tag: [java, markInterface]
 toc: true
 toc_sticky: true
 author_profile: false
@@ -44,6 +44,8 @@ public interface Cloneable {
 * 결과적으로`super.clone()`을 사용할 것이 아니라면 굳이 clone()을 오버라이딩 할 필요가 없다.
 
 위의 전제를 가지고 인터페이스를 구현하지 않으면 오버로딩(super의 메서드를 호출하는)이 불가능한 코드를 짜보았다.
+
+### 구현 
 
 * 마크 인터페이스
 ```java
