@@ -1,6 +1,6 @@
 ---
 layout: single
-title: "[leetcode 83] Remove Duplicates form Sorted List - Java"
+title: "[leetcode 83] Remove Duplicates from Sorted List - Java"
 categories: algorithm
 tag: [leetcode]
 toc: true
