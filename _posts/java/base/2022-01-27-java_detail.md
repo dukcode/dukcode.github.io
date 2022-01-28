@@ -27,6 +27,7 @@ search: true
 
 ## 연산자
 ### `static import`문을 사용하면 클래스의 static멤버를 호출할 때 클래스 이름을 생략할 수 있다.
+
 ```java
 import static java.lang.Integer.*       // Integer 클래서의 모든 static 메서드
 import static java.lang.Math.random;    // Math.random()만, 괄호 안붙임
@@ -36,6 +37,7 @@ import static java.lang.Math.random;    // Math.random()만, 괄호 안붙임
 ### switch문의 조건식에는 정수 이외에 문자, 문자열이 가능하다.
 
 ### 반복문에 이름을 붙여 중첩반복문을 빠져나갈 수 있다.
+
 ```java
 Loop : for (int i = 0; i < 9; ++i) {
     for (int j = 0; j < 9; ++j) {
@@ -47,6 +49,7 @@ Loop : for (int i = 0; i < 9; ++i) {
 ```
 ### 리터럴 간의 연산은 컴파일 시에 컴파일러가 계산하여 결과로 대체한다.
 * 따라서 아래와 같은 코드에서 명시적 형변환 과정을 거치지 않고 컴파일이 가능하다.
+
 ```java
 char c1 = 'a';
 
@@ -54,6 +57,7 @@ char c1 = 'a';
 char c2 = 'a' + 1;  // 가능
 ```
 ### 향상된 for문에서는 배열에 저장된 값을 변경할 수 없다.
+
 ```java
 int[] arr = {1, 2, 3, 4, 5}
 for (int num : arr) {
@@ -61,6 +65,7 @@ for (int num : arr) {
 }
 ```
 위의 코드를 풀어 쓰면
+
 ```java
 int[] arr = {1, 2, 3, 4, 5}
 for (int i = 0; i < arr.length; ++i) {
@@ -68,16 +73,19 @@ for (int i = 0; i < arr.length; ++i) {
     num *= 2;
 }
 ```
+
 위와 같기 때문이다. (임시로 복사해서 쓴다.)
 
 
 ## 배열
 ### 배열의 길이는 0일수도있다.
+
 ```java
 int[] arr = new int[0];
 ```
 
 ### println의 매개변수에 배열을 넣으면 Type@Address가 출력되지만 char배열은 예외이다.
+
 ```java
 int[] arr = {1, 2, 3, 4, 5};
 char[] chArr = {'a', 'b', 'c', 'd', 'e'};
@@ -85,7 +93,9 @@ char[] chArr = {'a', 'b', 'c', 'd', 'e'};
 System.out.println(arr);
 System.out.println(chArr);
 ```
+
 * 실행 결과
+
 ```sh
 [I@14318bb
 abcde
@@ -97,6 +107,7 @@ abcde
 
 ### 가변인자(varargs)는 내부적으로 배열을 이용한다.
 * 따라서 인자를 생략하고 싶을 때 `null`이나 길이가 0인 배열을 인자로 지정해야 한다.
+
 ```java
 String concatenate(String... str) {
     ...
@@ -105,9 +116,10 @@ String concatenate(String... str) {
 // concatenate();               // 에러
 concatenate(new String[0]);     // 가능
 concatenate(null);              // 가능
-
 ```
+
 * 또한 아래와 같은 경우 인자를 구별할 수 없어 오버로딩에 오류가 생긴다.
+
 ```java
 String concatenate(String... str) {
     ...
@@ -143,6 +155,7 @@ String concatenate(String delim, String str) {
 ### `final`이 붙은 멤버변수는 클래스 초기화 블럭이나 생성자에서 초기화가 가능하다.
 
 * 코드
+
 ```java
 class Test {
     public static final int STATIC_VALUE;
@@ -165,6 +178,7 @@ class Test {
 ```
 
 * 실행 결과
+
 ```sh
 10
 100
@@ -221,6 +235,7 @@ class Test {
 
 ### 메서드는 인스턴스를 따라가고, 멤버변수는 참조변수를 따라간다.
 * 코드
+
 ```java
 class Child extends Parent {
     String str = "child String";
@@ -248,6 +263,7 @@ class Parent {
 ```
 
 * 실행결과
+
 ```sh
 parent String
 child foo()
@@ -272,6 +288,7 @@ child string in foo()
 ### interface를 구현하고 조상클래스 상속을 동시에 하는 경우, static상수의 충돌이 일어날 수 있는데 이는 클래스의 이름을 붙여 해결 가능하다.
 ### interface를 구현하고 조상클래스 상속을 동시에 하는 경우, interface에 선언되어 있는 메서드를 조상클래스가 가지고 있을 경우 구현한 것으로 간주한다.
 * 코드
+
 ```java
 interface Talkable {
     public abstract void talk();
@@ -292,6 +309,7 @@ class Parent {
     }
 }
 ```
+
 * 실행 결과
 ```sh
 parent talk
