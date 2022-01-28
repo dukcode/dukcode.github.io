@@ -311,6 +311,7 @@ class Parent {
 ```
 
 * 실행 결과
+
 ```sh
 parent talk
 ```
