@@ -370,3 +370,68 @@ class AppleWatch extends Watch implements InterfaceComputer {
 * 지역내부클래스는 내부클래스명 앞에 숫자가 붙게 되는데 이는 다른 메서드에 같은 이름의 지역내부클래스가 선언되 있을 수 있기 때문이다.
 
 ### 내부클래스에서 외부클래스의 멤버변수에 접근할 때는 `Outer.this.value`와 같은 형태로 접근할 수 있다.
+
+## 예외
+
+### Exception의 자손은 RuntimeException과 그 외의 클래스로 나눌 수 있다.
+* 그 외의 클래스를 Exception클래스들 이라고 하자.
+* RuntimeException은 프로그래머의 실수에 의해 발생 할 수 있는 예외들이다. (ex. ArrayOutOfBoundsExceptions, NullpointerException, ClassCastException, ArithmeticException)
+* Exception클래스들은 주로 사용자들의 동작에 의해 발생하는 경우가 많다. (ex. 없는 파일의 이름 입력, 입력한 데이터 형식의 오류)
+
+### 처리하지 못한 에러는 JVM의 예외처리기(UncaughtExceptionHandler)가 받아서 예외의 원인을 화면에 출력한다.
+
+### try-catch문은 블럭 내에 포함된 문장이 하나뿐이라도 괄호를 생략할 수 없다.
+
+### catch블럭의 괄호 내에 선언된 참조션수의 종류와 생성된 예외클래스의 인스턴스를 instanceof 연산차를 이용해 검사한다.
+
+### 검사에서 일치하는 블럭을 찾으면 다음 블럭은 검사하지 않는다.
+
+### `printStackTrace()`는 예외발생 당시의 호출스택에 있었던 메서드의 정보와 예외메시지를 화면에 출력한다.
+
+### `getMessage()`는 발생한 예외클래스이 인스턴스에 저장된 메시지를 얻을 수 있다.
+
+### JDK1.7부터 '|' 기호를 이용해 catch블록에서 여러 exception을 처리할 수 있다.
+
+```java
+try {
+    ...
+} catch (ExcaptionA | ExceptionB e) {
+    e.printStackTrace();
+}
+```
+
+* '|' 기호로 연결된 예외 클래스가 조상과 자손관계에 있다면 컴파일 에러가 발생한다.
+* 두 클래스의 조상을 매개변수로 받으면 되기 때문에 불필요한 코드를 제거하라는 의미이다.
+* e로 조상 예외 클래스에 선언된 멤버만 사용할 수 있다.
+* instanceof 연산자로 e가 어떤 예외의 인스턴스인지 알아내어 각각 처리가 가능하지만, 이렇게 하면 catch문을 합치는 이유가 없다.
+
+### RuntimeException은 처리해주지 않아도 컴파일이 된다.
+* 원칙적으로 모든 Exception은 처리를 해주어야 한다. 처리해주지 않으면 컴파일 에러가 발생한다.
+* Exception이 발생하면 자손엔 RuntimeException 이외의 클래스들이 포함되어 있기 때문에 항상 처리가 필요하다. (안하면 컴파일 에러)
+* RuntioneException을 던지고 처리하지 않는다면 컴파일은 된다.
+    * RuntimeException은 프로그래머의 실수와 관련 있는데, 다음 코드와 같이 매번 Exception을 처리해주어야 하면 불편할 것이다.
+    ```java
+    try {
+        int[] arr = new int[10];
+
+        ...
+
+        // arr이 null일 수 있음, 0이 array bound를 벗어날 수 있음.
+        System.out.println(arr[0]);
+    } catch (ArrayIndexOutOfBoundsException ae) {
+        ...
+    } catch (NullpointerException ne) {
+        ...
+    }
+    ```
+
+### 메서드 내부에서 Exception을 던진다면 메서드 선언부에 throws로 예외를 선언해주어야 컴파일 에러가 나지 않는다.
+
+### 메서드 선언부의 throws에는 보통 반드시 처리해주어야 하는 예외만 선언한다.
+* 일레로 Object의 클래스의 wait()메서드는 InterruptedException과 IllegalMonitorStateException을 실제로 던지지만 첫번째 예외는 Exception의 직계자손이고, 후자는 Runtime의 직계자손이라 메서드 선언부에서는 InterruptedException만 던진다.
+
+### try-catch-finally 블럭에서 try 블럭에 return문이 있더라고 return 실행 전에 finally블럭에 있는 코드가 실행되고 return된다.
+
+### catch블럭에서 예외를 처리하고 다시 같은 예외를 던짐으로써 양쪽에서 나눠서 예외를 처리할 수 있다. 이를 예외 되던지기 라고 한다.
+
+### 일반적으로 return값이 void가 아닌 함수는 try문과 catch문 안에 return이 필요하지만, 예외 되던지기를 할 때 catch문에서 return문 대신 예외를 던진다.
