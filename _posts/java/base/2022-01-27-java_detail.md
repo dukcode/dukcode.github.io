@@ -400,7 +400,7 @@ try {
 }
 ```
 
-* '|' 기호로 연결된 예외 클래스가 조상과 자손관계에 있다면 컴파일 에러가 발생한다.
+* 연결된 예외 클래스가 조상과 자손관계에 있다면 컴파일 에러가 발생한다.
 * 두 클래스의 조상을 매개변수로 받으면 되기 때문에 불필요한 코드를 제거하라는 의미이다.
 * e로 조상 예외 클래스에 선언된 멤버만 사용할 수 있다.
 * instanceof 연산자로 e가 어떤 예외의 인스턴스인지 알아내어 각각 처리가 가능하지만, 이렇게 하면 catch문을 합치는 이유가 없다.
@@ -435,3 +435,78 @@ try {
 ### catch블럭에서 예외를 처리하고 다시 같은 예외를 던짐으로써 양쪽에서 나눠서 예외를 처리할 수 있다. 이를 예외 되던지기 라고 한다.
 
 ### 일반적으로 return값이 void가 아닌 함수는 try문과 catch문 안에 return이 필요하지만, 예외 되던지기를 할 때 catch문에서 return문 대신 예외를 던진다.
+
+## java.lang 패키지
+
+### Object클래스의 hashcode() 메서드는 객체의 주소값으로 해쉬코드(4byte)를 만들어 반환한다.
+* 따라서 64bit JVM에서는 주소값이 8byte이므로 해시코드가 중복될 수 있다.
+* 또한 HashMap, HashSet에 저장할 객체라면 반드시 hashcode()메서드를 오버라이딩 해야한다.
+
+### String은 Object의 hashcode() 메서드를 오버라이딩 하고 있다.
+* hashcode를 구하는 내부 구현은 다음과 같다.
+
+```java
+public static int hashCode(byte[] value) {
+    int h = 0;
+    int length = value.length >> 1;
+    for (int i = 0; i < length; i++) {
+        h = 31 * h + getChar(value, i);
+    }
+    return h;
+}
+```
+* 따라서 String의 hashcode() 반환값은 저장된 문자열이 같으면 동일한 hashcode를 얻는다. 다음과 같이 System.identityHashCode(Object x)를 이용하면 객체의 주소값으로 생성한 hashcode를 얻을 수 있다.
+
+### [Object의 clone() 메서드](https://dukcode.github.io/java/java_clone_method/)
+
+### JDK1.5부터 조상 메서드의 반환타입을 자손클래스의 타입으로 변경을 허용하는 `공변 반환타입`이 추가되었다.
+```java
+class Parent {
+    Parent foo() {
+        return new Parent();
+    }
+}
+
+class Child extend Parent {
+    Child foo() {
+        return new Child();
+    }
+}
+```
+
+### Class 클래스
+* 클래스의 모든 정보를 담고 있으며, 클래스당 1개만 존재한다.
+* 클래스로더에 의해 메모리에 클래스가 올라갈 때 자동으로 생성된다.
+    * 클래스로더는 실행 시에 필요한 클래스를 동적으로 메모리에 로드하는 역할을 한다.
+
+* Class객체에 대한 참조를 얻는 방법은 다음과 같다.
+
+```java
+Class cObj = new Card().getClass();     // 생성된 객체로부터
+Class cObj = Card.class;                // 클래스 리터럴로 부터 얻는 방법
+Class cObj = Class.forName("Card");     // 클래스 이름으로부터 얻는 방법
+```
+
+* 특히 forName()은 데이터베이스 드라이버를 메모리에 올릴 때 주로 사용한다.
+
+### String 클래스
+* String Class는 immutable(변경 불가능한) 클래스이다.
+* 문자열 리터럴은 컴파일 시에 클래스 파일에 저장되고, 같은 내용의 문자열 리터럴은 한번만 저장된다.
+* 문자열 리터럴도 String인스턴스이다.
+
+```java
+System.out.println("123".getClass());
+```
+
+```
+>> class java.lang.String
+```
+
+* C언어에서는 문자열의 끝에 null문자 ('\0')이 항상 붙지만 자바에서는 널 문자를 사용하지 않고 문자열의 길이정보를 따로 저장한다.
+* 일반적으로 변수를 선언할 때 String은 빈 문자열로 char는 공백으로 초기화 하는것이 일반적이다.
+    * 이유는 모르겠다.
+
+```java
+String str = "";
+char c = ' ';
+```
