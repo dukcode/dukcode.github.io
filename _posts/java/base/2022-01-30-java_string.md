@@ -261,4 +261,10 @@ public String(char value[])
 
 </div>
 </details>
+## `join()` 메서드
+...작성예정
+## `getBytes()` 메서드
+...작성예정
+## `valueOf()` 메서드
+
 ## 작성중...
