@@ -1,4 +1,3 @@
-
 ---
 layout: single
 title: "[JAVA] String배열을 예쁘게 출력해보자"
