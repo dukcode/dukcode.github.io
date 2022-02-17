@@ -42,8 +42,12 @@ MathJax = {
 </script>
 ```
 
+{% raw %}
 * `/_includes/` 폴더의 `head.html`을 열어 다음과 같이 입력하고 저장한다.\
-![head_html](/images/2022-01-14-jekyll_mathjax3/head_html.png)
+  ```html
+    {% include mathjax.html %}
+  ```
+{% endraw %}
 
 * github에 push해보면 다음과 같이 mathjax3가 잘 적용됨을 확인 할 수 있다.
 
