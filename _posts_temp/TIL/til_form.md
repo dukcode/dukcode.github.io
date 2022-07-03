@@ -14,8 +14,6 @@ search: true
 
 ## :runner: 운동
 
-
 ## :computer: STUDY
-
 
 ## :stopwatch: 3분 회고
