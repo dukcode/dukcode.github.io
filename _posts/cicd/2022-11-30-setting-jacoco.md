@@ -1,6 +1,6 @@
 ---
 layout: single
-title: "Gradle에 JaCoCo 설정하기"
+title: "Gradle Project에 JaCoCo 설정하기"
 categories: cicd
 tag: [cicd, jacoco]
 toc: true
