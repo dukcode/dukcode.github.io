@@ -4,7 +4,7 @@ title: "샘플 포스트 입니다."
 categories: ci_cd
 tag: [sample1, sample2]
 toc: true
-author_profile: false
+author_profile: true
 sidebar:
     nav: "docs"
 # search: false

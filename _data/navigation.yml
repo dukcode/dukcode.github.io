@@ -21,5 +21,6 @@ docs:
   - title : "Category"
     url: /categories/
     children:
-      - title: "ci_cd"
-      - url: "/categories/ci_cd"
+      - title: "CI/CD"
+        url: "/cicd"
+        category: "cicd"

@@ -5,7 +5,7 @@ categories: cicd
 tag: [cicd, jacoco]
 toc: true
 toc_sticky: true
-author_profile: false
+author_profile: true
 sidebar:
     nav: "docs"
 # search: false

@@ -5,7 +5,7 @@ categories: cicd
 tag: [cicd, checkstyle]
 toc: true
 toc_sticky: true
-author_profile: false
+author_profile: true
 sidebar:
     nav: "docs"
 # search: false
