@@ -24,3 +24,6 @@ docs:
       - title: "CI/CD"
         url: "/cicd"
         category: "cicd"
+      - title: "GIT"
+        url: "/git"
+        category: "git"
