@@ -107,7 +107,7 @@ author:
   name             : "DUKCODE"
   avatar           : "/assets/images/bio/bio-photo.png" # path of avatar image, e.g. "/assets/images/bio-photo.jpg"
   bio              : "DUKCODE의 개발 블로그"
-  location         : "Seoul, South Korea"
+  location         : "Seoul"
   email            :
   links:
     - label: "GitHub"
