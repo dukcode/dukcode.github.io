@@ -19,7 +19,6 @@ main:
 
 docs:
   - title : "Category"
-    url: /categories/
     children:
       - title: "CI/CD"
         url: "/cicd"
@@ -27,3 +26,6 @@ docs:
       - title: "GIT"
         url: "/git"
         category: "git"
+      - title: "JAVA"
+        url: "/java"
+        category: "java"
