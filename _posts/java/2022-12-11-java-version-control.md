@@ -32,9 +32,9 @@ JDK를 설치하고 관리해주는 툴은 여러가지가 있지만, **가장 �
 
 `SDKMAN`은 JVM에 관련한 다양한 개발도구를 설치할 수 있는 범용 패키지 관리 도구이다. JDK 외에도 `Maven`, `Gradle`, `Ant` 등의 도구를 설치할 수 있다.
 
-위에서 소개한 `Homebrew`, `YUM/APT`, `Chocolatey`와 차별화 되는 가장 큰 장점은 다양한 버전을 관리하며, 사용할 버전을 명령어 한 줄로 변경할 수 있다는 점이있다. 또한 `Adopt Open JDK`, `Amazon Corretto`, `GraalVM`, `Zulu` 등의 주요 배포판들을 거의 모두 포함하고 있는 것이 장점이다.
+위에서 소개한 `Homebrew`, `YUM/APT`, `Chocolatey`와 차별화 되는 가장 큰 장점은 **다양한 버전을 관리하며, 사용할 버전을 명령어 한 줄로 변경할 수 있다는 점이 있다.** 또한 `Adopt Open JDK`, `Amazon Corretto`, `GraalVM`, `Zulu` 등의 주요 배포판들을 거의 모두 포함하고 있는 것이 장점이다.
 
-또한 명령행에서 디폴트로 사용할 JDK 버전은 `~/.sdkman/candidates/java/current` 에서 심볼릭 링크로 관리되고, 이 링크가 환경변수 `$PATH`와 `$JAVA_HOME`에 추가 된다. 또한 실제 JDK 디렉토리는 `~/.sdkman/candidates/java`에서 관리 되기 때문에 JDK의 경로를 한 곳에서 관리할 수 있는 장점이 있다.
+또한 명령행에서 디폴트로 사용할 JDK 버전은 `~/.sdkman/candidates/java/current`에서 심볼릭 링크로 관리되고, 이 링크가 환경변수 `$PATH`와 `$JAVA_HOME`에 추가 된다. 또한 실제 JDK 디렉토리는 `~/.sdkman/candidates/java`에서 관리 되기 때문에 JDK의 경로를 한 곳에서 관리할 수 있는 장점이 있다.
 
 ### direnv를 함께 사용(선택)
 
