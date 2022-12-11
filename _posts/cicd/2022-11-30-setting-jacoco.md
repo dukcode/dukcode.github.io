@@ -8,10 +8,15 @@ toc_sticky: true
 author_profile: true
 sidebar:
     nav: "docs"
+header:
+  teaser: "https://i.imgur.com/xFYdbFw.png"
 # search: false
 ---
 
 ## JaCoCo란?
+
+![](https://i.imgur.com/xFYdbFw.png){: .align-center}
+
 
 `JaCoCo`란 Java Code Coverage의 약자로 Java 코드의 커버리지를 체크하는 라이브러리이다. 테스트코드가 해당 코드를 얼마나 커버하는지를 확인해준다. 또한 사용자의 설정으로 원하는 커버리지 기준을 설정하고 html이나 xml, csv의 형태로 코드 커버리지를 확인할 수 있는 툴이다.
 

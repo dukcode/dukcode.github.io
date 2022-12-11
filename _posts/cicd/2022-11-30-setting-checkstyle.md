@@ -8,8 +8,12 @@ toc_sticky: true
 author_profile: true
 sidebar:
     nav: "docs"
+header:
+  teaser: "https://i.imgur.com/RhIrIbF.png"
 # search: false
 ---
+
+![](https://i.imgur.com/RhIrIbF.png){: .align-center}
 
 Gradle 프로젝트에 `checkstyle`을 적용해 보려고 한다.
 

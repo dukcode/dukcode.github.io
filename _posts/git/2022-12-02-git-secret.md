@@ -8,6 +8,8 @@ toc_sticky: true
 author_profile: true
 sidebar:
     nav: "docs"
+header:
+  teaser: "https://git-secret.io/images/git-secret-big.png"
 # search: false
 ---
 
@@ -17,7 +19,7 @@ sidebar:
 
 예를 들어, `.gitignore`처리된 파일을 직접 공유한다면 매번 민감정보가 담긴 파일이 업데이트 될 때마다 공유해야하는 번거로움이 생기고, 또 해당 파일의 버전관리가 전혀 되지 않는 문제점이 생긴다. 또한 자동 배포 시스템 구축 시에도 해당 민감 파일을 따로 업로드 해주어야 해서 자동화의 의미가 퇴색된다.
 
-![](https://git-secret.io/images/git-secret-big.png)
+![](https://git-secret.io/images/git-secret-big.png){: .align-center}
 
 **git-secret**은 이런 문제들의 해결을 도와주는 툴이다. **git-secret**을 이용하면 다음과 같은 장점이 있다.
 
