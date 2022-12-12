@@ -17,18 +17,16 @@ header:
 
 Gradle 프로젝트에 `checkstyle`을 적용해 보려고 한다.
 
-체크스타일이란 프로그래머가 자바코드를 작성할 때 일반적으로 지켜야 하는 코딩 표준을 잘 준수할 수 있도록 지원하는 유틸이다.
+체크스타일이란 프로그래머가 자바코드를 작성할 때 일반적으로 지켜야 하는 코딩 표준을 잘 준수할 수 있도록 지원하는 유틸이다. `checkstyle`을 적용하면 내가 짠 코드가 정해진 규칙에서 무엇을 어기고 있는지 보고서를 통해 보고 받을 수 있다.
 
-google이나 naver같은 대기업은 물론 작은 기업도 협업을 할 때, 마치 한사람이 짠 코드인 것처럼 개행 컨벤션이나, 네임컨벤션 등 코드를 짤 때의 린트를 맞춘다.
-
-대기업들은 이를 코드 컨벤션 규칙들을 xml 파일로 제공하고 있으며 대표적으로 google이 지원하고 있다.
+google이나 naver같은 대기업은 물론 작은 기업도 협업을 할 때, 마치 한사람이 짠 코드인 것처럼 개행 컨벤션이나, 네임컨벤션 등 린트를 맞춘다. 대기업들은 이를 코드 컨벤션 규칙들을 xml 파일로 제공하고 있으며 대표적으로 google이 지원하고 있다.
 
 > [LINK](https://google.github.io/styleguide/javaguide.html) 에서 구글의 자바 스타일 가이드를 확인할 수 있다.
 > xml은 [LINK](https://github.com/google/styleguide) 에서 ide에 맞는것을 골라 사용하면 된다.
 
-해당 프로젝트는 gradle을 사용하고 gradle에서 checkstyle을 플러그인으로 지원하고 있다. ([공식문서](https://docs.gradle.org/current/userguide/checkstyle_plugin.html))
-
 ## gradle 프로젝트에 checkstyle적용하기
+
+gradle에서 checkstyle을 플러그인으로 지원하고 있다. ([공식문서](https://docs.gradle.org/current/userguide/checkstyle_plugin.html))
 
 가장 먼저 `build.gradle`에 다음과 같이 설정하면 플러그인을 불러올 수 있다.
 
@@ -38,7 +36,7 @@ plugins {
 }
 ```
 
-[checkstyle 네이버 xml 설정파일](https://github.com/naver/hackday-conventions-java/tree/master/rule-config) 해당 링크에 들어가면 naver에서 공식적으로 제공하는 checkstyle의 xml 파일들을 받을 수 있다.
+나는 네이버의 코딩 컨벤션을 적용하고자 한다. [checkstyle 네이버 xml 설정파일](https://github.com/naver/hackday-conventions-java/tree/master/rule-config) 해당 링크에 들어가면 naver에서 공식적으로 제공하는 checkstyle의 xml 파일들을 받을 수 있다.
 
 rules와 suppressions 모두 받아서 저장해주자.
 
@@ -84,7 +82,7 @@ checkstyle {
 
 ### `CompileQueryDsl` 오류 해결하기
 
-엄청나게 많은 검색을 했는데 원인은 정확히 알 수 없었다. pmd도 코드스타일 관련 도구인데 비슷한 문제가 생긴듯 하여 같은 해결법을 적용해 주었다. (관련 링크 :  [LINK](https://stackoverflow.com/questions/48988083/gradle-compile-querydsljava-failed))
+pmd도 코드스타일 관련 도구인데 비슷한 문제가 생긴듯 하여 같은 해결법을 적용해 주었다. (관련 링크 :  [LINK](https://stackoverflow.com/questions/48988083/gradle-compile-querydsljava-failed))
 
 ```groovy
 checkstyle {
@@ -166,7 +164,7 @@ gradle check를 돌려보면
 
 ![](../../images/Pasted%20image%2020221110154939.png){: .align-center}
 
-아까와 다르게 25개의 에러가 있는 것이 확인된다. 나의 경우에는 변수의 이름에 `requestDTO`와 같은 카멜케이스를 무시한 이름과 `MessageKo`와 같은 변수 이름이 문제가 되었다. 이를 바꿔주자
+아까와 다르게 25개의 에러가 있는 것이 확인된다. 나의 경우에는 변수의 이름에 `requestDTO`와 같은 카멜케이스를 무시한 이름이 문제가 되었다. 이를 바꿔주자
 
 `DTO`를 `Dto`로 바꾸며 `jacocoTestCoverageVerification`에서 exclude할 클래스도 `DTO`에서 `Dto`로 바꿔주었다.
 
