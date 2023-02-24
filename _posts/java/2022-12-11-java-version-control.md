@@ -9,7 +9,7 @@ author_profile: true
 sidebar:
   nav: "docs"
 header:
-  teaser: https://i.imgur.com/pU1QRQv.png"
+  teaser: "https://i.imgur.com/pU1QRQv.png"
 # search: false
 ---
 
