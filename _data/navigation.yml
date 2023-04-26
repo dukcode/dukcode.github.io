@@ -18,7 +18,7 @@ main:
   #   url: /sitemap/
 
 docs:
-  - title : "Category"
+  - title : "DEVELOPMENT"
     children:
       - title: "CI/CD"
         url: "/cicd"
@@ -29,3 +29,8 @@ docs:
       - title: "JAVA"
         url: "/java"
         category: "java"
+  - title: "BOOK STUDY"
+    children:
+      - title: "OBJECT"
+        url: "/object"
+        category: "object"
