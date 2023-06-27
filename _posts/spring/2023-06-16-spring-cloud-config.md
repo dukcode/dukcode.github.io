@@ -1,7 +1,7 @@
 ---
 layout: single
 title: "Spring Cloud Config 적용해보기"
-categories: cicd
+categories: spring
 tag: [spring, spring-cloud, spring-cloud-config, properties, yml]
 toc: true
 toc_sticky: true
