@@ -147,7 +147,7 @@ $ java -cp "javac -cp "[복사한 경로]" PrimitiveServlet.java
 
 ### `HttpServer1` 클래스
 
-이 클래스는 [chap01](http://dukcode.github.org/tomcat/how-tomcat-works-01)의 `HttpServer` 클래스와 거의 유사하다. 다른 점은 정적 자원 말고도 서블릿 요청에 대한 처리도 할 수 있다는 점이다.
+이 클래스는 [chap01](http://dukcode.github.org/how-tomcat-works/how-tomcat-works-01)의 `HttpServer` 클래스와 거의 유사하다. 다른 점은 정적 자원 말고도 서블릿 요청에 대한 처리도 할 수 있다는 점이다.
 
 정적 자원에 요청하려면 다음과 같은 URL로 요청하면 된다.
 
@@ -232,7 +232,7 @@ public class HttpServer1 {
 }
 ```
 
-기본적인 동작 방식은 [chap01](http://dukcode.github.org/tomcat/how-tomcat-works-01)의 `HttpServer`과 유사하다. 하지만 다른점은 `Response` 인스턴스에게 직접 응답을 전송하도록 시키는 것이 아닌 경우에 따라 `ServletProcessor1`과 `StaticResourceProcessor`에게 프로세스를 맡긴다.
+기본적인 동작 방식은 [chap01](http://dukcode.github.org/how-tomcat-works/how-tomcat-works-01)의 `HttpServer`과 유사하다. 하지만 다른점은 `Response` 인스턴스에게 직접 응답을 전송하도록 시키는 것이 아닌 경우에 따라 `ServletProcessor1`과 `StaticResourceProcessor`에게 프로세스를 맡긴다.
 
 `/servlet/`으로 시작하는 경우에 `ServletProcessor1`에게 프로세스를 맡기고 아닌 경우에 `StaticResourceProceccor`에게 프로세스를 맡긴다.
 
@@ -240,7 +240,7 @@ public class HttpServer1 {
 
 ### `Request`와 `Response` 클래스
 
-우리는 Servlet 표준이 제공하는 `Request`와 `Reponse`를 사용해 서블릿 요청을 처리할 것이므로 두 클래스 모두 `ServletRequest`, `ServletResponse`라는 인터페이스를 구현하도록 변경한다. 두 클래스의 로직은  [chap01](http://dukcode.github.org/tomcat/how-tomcat-works-01)의 로직과 대부분 유사하다. 
+우리는 Servlet 표준이 제공하는 `Request`와 `Reponse`를 사용해 서블릿 요청을 처리할 것이므로 두 클래스 모두 `ServletRequest`, `ServletResponse`라는 인터페이스를 구현하도록 변경한다. 두 클래스의 로직은  [chap01](http://dukcode.github.org/how-tomcat-works/how-tomcat-works-01)의 로직과 대부분 유사하다. 
 
 인스턴스에서 구현하도록 요구하는 메서드들은 일단 구현을 미루도록 빈 구현을 해놓도록 하자.
 
@@ -432,7 +432,7 @@ public class StaticResourceProcessor {
 
 `ServletProcessor1`클래스의 `process` 메서드의 역할은 `WEB_ROOT` 경로에서 URI 경로와 맞는 서블릿 클래스를 로드해서 `service`메서드를 호출하는 기능을 한다.
 
-클래스를 동적으로 로드하는 코드는 처음 짜봐서 난해할 수 있지만, 사용법을 익힌다고 생각해보고 직접 작성해보자. 클래스로더는 [chap08](http://dukcode.github.org/tomcat/how-tomcat-works-08)에서 자세히 다룰 예정이다.
+클래스를 동적으로 로드하는 코드는 처음 짜봐서 난해할 수 있지만, 사용법을 익힌다고 생각해보고 직접 작성해보자. 클래스로더는 [chap08](http://dukcode.github.org/how-tomcat-works/how-tomcat-works-08)에서 자세히 다룰 예정이다.
 
 샘플 코드와 다른 점은 클래스를 읽어오는 부분이다. `Class.newInstance`는 예외 처리가 난해해 `JAVA 9`부터 Deprecated 되었다. `Class.getContructor` 메서드를 기본 생성자를 가져오고 기본 생성자를 통해 클래스를 로드하는 방식으로 변경했다.
 
