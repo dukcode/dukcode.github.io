@@ -37,3 +37,6 @@ docs:
       - title: "OBJECT"
         url: "/object"
         category: "object"
+      - title: "HOW-TOMCAT-WORKS"
+        url: "/how-tomcat-works"
+        category: "how-tomcat-works"

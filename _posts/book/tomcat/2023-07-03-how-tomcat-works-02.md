@@ -1,8 +1,8 @@
 ---
 layout: single
 title: "[톰캣 최종분석 02] 간단한 서블릿 컨테이너"
-categories: tomcat
-tag: [tomcat]
+categories: how-tomcat-works
+tag: [tomcat, 톰캣_최종분석, how_tomcat_works, 톰캣_만들기, 톰캣_클론코딩]
 toc: true
 toc_sticky: true
 author_profile: true
