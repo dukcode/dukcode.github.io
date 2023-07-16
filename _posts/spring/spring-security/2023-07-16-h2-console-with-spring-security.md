@@ -15,7 +15,7 @@ header:
 
 # Spring Security에서 H2 Console 사용하기
 
-![](https://i.imgur.com/iuKiWPf.png)
+![](https://i.imgur.com/iuKiWPf.png){:.align-center width="500" }
 
 로컬 환경에서 자주 사용되는 H2 DB는 웹 클라이언트를 제공하고 있고, 이를 Spring Boot에서도 지원한다.
 
@@ -53,15 +53,18 @@ public class SpringConfig {
   @Bean
   public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
     http.authorizeHttpRequests(
-        request -> request.requestMatchers(PathRequest.toH2Console()).permitAll());
-        
+            request -> request.requestMatchers(PathRequest.toH2Console()).permitAll()
+                .anyRequest().authenticated());
+
     return http.build();
   }
 }
 
 ```
 
-`PathRequest.toH2Console()`을 사용하면 H2 Console의 URL을 `application.yml`을 통해 디폴트가 아닌 다른 값으로 변경하더라도 해당 클래스를 고칠 필요가 없다.
+그리고 나머지 URL에 대해 모두 인증이 필요하도록 설정한다.
+
+> `PathRequest.toH2Console()`을 사용하면 H2 Console의 URL을 `application.yml`을 통해 디폴트가 아닌 다른 값으로 변경하더라도 해당 클래스를 고칠 필요가 없다.
 
 ## CSRF 설정
 
@@ -80,9 +83,9 @@ public class SpringConfig {
   @Bean
   public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
     http.authorizeHttpRequests(
-        request -> request.requestMatchers(PathRequest.toH2Console()).permitAll())
+            request -> request.requestMatchers(PathRequest.toH2Console()).permitAll()
+                .anyRequest().authenticated())
         .csrf(csrf -> csrf.ignoringRequestMatchers(PathRequest.toH2Console()));
-
         
     return http.build();
   }
@@ -111,7 +114,8 @@ public class SpringConfig {
   @Bean
   public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
     http.authorizeHttpRequests(
-            request -> request.requestMatchers(PathRequest.toH2Console()).permitAll())
+            request -> request.requestMatchers(PathRequest.toH2Console()).permitAll()
+                .anyRequest().authenticated())
         .csrf(csrf -> csrf.ignoringRequestMatchers(PathRequest.toH2Console()))
         .headers(headers -> headers.frameOptions(FrameOptionsConfig::sameOrigin));
 
