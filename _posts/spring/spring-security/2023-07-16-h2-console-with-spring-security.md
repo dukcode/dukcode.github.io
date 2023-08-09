@@ -48,7 +48,7 @@ spring:
 
 @EnableWebSecurity
 @Configuration
-public class SpringConfig {
+public class SecurityConfig {
 
   @Bean
   public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
@@ -78,7 +78,7 @@ Spring Security는 `CsrfFilter`를 기본적으로 Default Filter로 설정하�
 
 @EnableWebSecurity
 @Configuration
-public class SpringConfig {
+public class SecurityConfig {
 
   @Bean
   public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
@@ -109,7 +109,7 @@ H2 웹콘솔의 iframe이 정상적으로 작동하려면 이를 같은 Origin�
 
 @EnableWebSecurity(debug = true)
 @Configuration
-public class SpringConfig {
+public class SecurityConfig {
 
   @Bean
   public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
