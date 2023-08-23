@@ -15,6 +15,7 @@ header:
 
 # Spring Security에서 H2 Console 사용하기
 
+
 ![](https://i.imgur.com/iuKiWPf.png){:.align-center width="500" }
 
 로컬 환경에서 자주 사용되는 H2 DB는 웹 클라이언트를 제공하고 있고, 이를 Spring Boot에서도 지원한다.
@@ -32,15 +33,11 @@ spring:
 
 애플리케이션을 실행하고 `http://localhost:8080/h2-console`로 접속하게 되면 H2가 제공하는 웹 콘솔에 접근할 수 있다. (`url`설정을 하지 않으면 Spring Boot가 임의로 이름을 설정하기 때문에 접속이 번거로워 추가했다.)
 
-하지만 Spring Security와 이를 함께 사용하려면 접근이 불가능하다. 
+하지만 Spring Security와 이를 함께 사용하려면 접근이 불가능하다. 그 이유와 두가지 해결 방법을 알아보자.
 
-- `permitAll()` 설정
-- CSRF 설정
-- X-Frame-Options 설정
+## Spring Security에서 H2 Console이 안되는 이유 하나하나 제거하기
 
-위와 같은 Spring Security 설정이 필요하다. 그 이유와 해결 방법을 알아보자.
-
-## `permitAll()` 설정
+### `permitAll()` 설정
 
 매번 콘솔에 접근할 때마다 인증을 요구하면 번거로울 것이다. `/h2-console` 관련 URL들에 대해 인증을 면제해주어야 쉽게 접근할 수 있다. 다음과 같은 설정으로 `/h2-console` 관련 URL에 대해 인증을 면제할 수 있다.
 
@@ -66,7 +63,7 @@ public class SecurityConfig {
 
 > `PathRequest.toH2Console()`을 사용하면 H2 Console의 URL을 `application.yml`을 통해 디폴트가 아닌 다른 값으로 변경하더라도 해당 클래스를 고칠 필요가 없다.
 
-## CSRF 설정
+### CSRF 설정
 
 H2 웹콘솔은 CSRF 토큰을 받아도 다음 요청에 활용하지 않는다. 즉, H2 웹콘솔은 CSRF에 대응되지 않는 페이지이다.
 
@@ -95,7 +92,7 @@ public class SecurityConfig {
 
 `/h2-console`에 관련한 URL만 CSRF를 적용하지 않도록 설정하고 있다. **만약 REST API를 만든다면 CSRF 보안 기능을 끄는 편이므로 관련 코드를 `csrf(AbstractHttpConfigurer::disable)`로 교체해 CSRF 보안 기능을 Spring Security에서 비활성화 할 수 있다.**
 
-## X-Frame-Options 설정
+### X-Frame-Options 설정
 
 H2 웹콘솔은 iframe을 통해 화면을 구성한다. 브라우저에서 iframe에 대한 모든 요청을 허용하면 **디도스 공격**, **클릭재킹** 공격에 취약해 질 수 있다. 따라서 **브라우저**는 요청 응답에 있는 `X-Frame-Options` 헤더의 내용에 따라 iframe에서의 요청을 허용할 것인지 허용하지 않을 것인지 판단한다.
 
@@ -127,4 +124,29 @@ public class SecurityConfig {
 
 위와 같이 설정하면 `X-Frame-Options` 헤더의 값이 `SAMEORIGIN`으로 변경된다. 브라우저는 iframe에서 일어난 요청에 대해 Origin을 비교하고 같으면 요청을 허용하게 된다. 즉, `http://localhost:8080/**`의 iframe에서의 요청이 `http://localhost:8080/**`으로 향하는 요청인지 확인한다.
 
-위의 3가지 설정을 마치면 H2 웹콘솔을 Spring Security와 함께 이용할 수 있다.
+위의 3가지 설정을 마치면 H2 웹콘솔을 Spring Security와 함께 이용할 수 있ty다.
+
+## Spring Security를 통과하지 않도록 하기
+
+위에서는 H2 Console이 Spring Security 필터를 통과할 때, 작동하지 않는 이유를 알아보며 하나하나 장애물을 제거했다.
+
+하지만 가장 쉬운 방법은 H2 Console에 대한 요청이 Spring Security 필터를 통과하지 않도록 하는 것이다. 다음과 같이 설정하면 H2 Console에 대한 요청이 시큐리티 필터를 통과하지 않도록 할 수 있다.
+
+
+```java
+@EnableWebSecurity
+@Configuration
+public class SecurityConfiguration {
+
+  @Bean
+  @ConditionalOnProperty(name = "spring.h2.console.enabled",havingValue = "true")
+  public WebSecurityCustomizer configureH2ConsoleEnable() {
+    return web -> web.ignoring()
+        .requestMatchers(PathRequest.toH2Console());
+  }
+
+}
+
+```
+
+`@ConditionalOnProperty`를 통해 스프링 설정에 h2-console이 enable되어 있을때만 작동하도록 했다. 이제 H2 Console에 대한 요청은 시큐리티 필터를 지나지 않으므로 H2 Console을 자유롭게 이용할 수 있다. 또한 개발 환경이나 운영 환경에서는 `spring.h2.console.enabled`를 사용하지 않거나 false로 설정할 것이기 때문에 자연스럽게 해당 빈이 생성되지 않아 h2에 대한 흔적을 지울 수 있다.
