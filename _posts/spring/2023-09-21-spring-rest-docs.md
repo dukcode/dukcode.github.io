@@ -1,16 +1,18 @@
 ---
 layout: single
-title: "Spring REST Docs 사용법"
+title: Spring REST Docs 사용법
 categories: spring
-tag: [spring, api-docs, spring-rest-docs]
+tags:
+  - spring
+  - api-docs
+  - spring-rest-docs
 toc: true
 toc_sticky: true
 author_profile: true
 sidebar:
-  nav: "docs"
+  nav: docs
 header:
-  teaser: "https://i.imgur.com/qRmIrxY.png"
-# search: false
+  teaser: https://i.imgur.com/qRmIrxY.png
 ---
 # Spring REST Docs 제대로 알아보고 사용해보기
 
@@ -170,7 +172,7 @@ bootJar {
 }
 ```
 
-1. 개별 클래스 테스트가 진행되기 전에 이전에 생성되었던 html 파일을 삭제하도록 한다. 만약 파일 명을 바꾸거나 위치를 옮길 때, 바꾸기 전의 html파일이 원래 위치에 그대로 존재하는 것을 방지하기 위해 설정했다.
+1. 개별 클래스 테스트가 진행되기 전에 이전에 생성되었던 html 파일을 삭제하도록 한다. 만약 파일 명을 바꾸거나 위치를 옮길 때, 바꾸기 전의 html파일이 원래 위치에 그대로 존재하는 것을 방지하기 위해 설정했다. (gradle이 증분 빌드를 사용하기 때문인 것으로 추측된다.)
 2. `test` 태스크가 끝나면 `asccidoctor` 태스크가 실행되도록 `finalizedBy`를 통해 설정한다.
 3. `asciidoctor` 태스크가 끝나면 새로 작성한 태스크인 `copyDocument`가 실행되도록 설정한다.
 4. `asciidoctor` 태스크가 시작하기 전 `static/docs`에 있는 이전 문서들을 삭제한다.
@@ -547,7 +549,7 @@ fieldWithPath("email")
 ![](https://i.imgur.com/mTsZ9Px.png)
 
 
-커스텀 스니펫은 `src/test/resources/org/springframework/restdocs/templates`에 작성하면 된다. `request-fields.snippet`파일을 위의 경로에 만들자. 그러면 디폴트 스니펫 템플릿 대신 작동하게 된다.
+커스텀 스니펫은 src/test/resources/org/springframework/restdocs/templates 디렉토리 하위에 작성하면 된다. `request-fields.snippet`파일을 위의 경로에 만들자. 그러면 디폴트 스니펫 템플릿 대신 작동하게 된다.
 다음과 같이 어트리뷰트를 추가하자.
 
 ```html
@@ -567,7 +569,6 @@ fieldWithPath("email")
 
 ![](https://i.imgur.com/F6Y6jBH.png)
 
-스니펫을 커스텀 해서 사용하려면
 ##### .snippet 파일을 AsciiDoc로 인식하지 않을 때 (IntelliJ)
 
 ![](https://i.imgur.com/U8X4YMN.png)
