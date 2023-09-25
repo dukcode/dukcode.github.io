@@ -157,6 +157,10 @@ pre {
   font-family: $monospace;
 }
 
+code {
+  font-size: 1.1em;
+}
+
 pre {
   overflow-x: auto; /* add scrollbars to wide code blocks*/
 }
@@ -174,12 +178,12 @@ hr {
 
 ul li,
 ol li {
-  margin-bottom: 0.5em;
+  margin-bottom: 0.9em;
 }
 
 li ul,
 li ol {
-  margin-top: 0.5em;
+  margin-top: 0.9em;
 }
 
 /*

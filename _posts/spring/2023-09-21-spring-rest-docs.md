@@ -77,6 +77,7 @@ asciidoctor { // (5)
 
 bootJar { // (6)
     dependsOn asciidoctor
+
     from( "${asciidoctor.outputDir}") {
         into 'static/docs'
     }
@@ -158,8 +159,14 @@ task copyDocument(type: Copy) { // (5)
     into file('src/main/resources/static/docs')  
 }
 
-bootJar { // (6)
-    dependsOn asciidoctor
+bootJar {  
+    dependsOn asciidoctor  
+    doFirst {  
+        delete file('static/docs')  
+    }  
+    from("${asciidoctor.outputDir}") {  
+        into 'static/docs'  
+    }  
 }
 ```
 
@@ -168,7 +175,7 @@ bootJar { // (6)
 3. `asciidoctor` 태스크가 끝나면 새로 작성한 태스크인 `copyDocument`가 실행되도록 설정한다.
 4. `asciidoctor` 태스크가 시작하기 전 `static/docs`에 있는 이전 문서들을 삭제한다.
 5. `asciidoctor` 태크스의 결과물을 `static/docs`로 옮긴다. 따라서 intellij run 시에 `/docs/**` URL로 API 문서에 접근할 수 있다.
-6. `bootJar`  태스크 설정에 있던 복사 로직을 제거하였다. `bootJar`가 `asciidoctor` 태스크에 의존하고 있다. 따라서 태스크 체인을 따라가보면 `bootJar` 실행 시, `test` - `asciidoctor` - `copyDocument` - `bootJar` 순서로 실행되게 된다. 즉, 배포 시 URL을 통해 API 문서에 접근할 수 있다.
+6. 기존 `bootJar`  태스크 설정에  기존 html 파일을 삭제하는 로직을 추가하였다. `build/resource/main/static/docs` 하위에 존재하는 이전 빌드의 파일을 삭제했다. 만약 파일의 위치를 변경하거나 이름을 변경했을 때 삭제 설정을 하지 않으면 기존의 파일이 그대로 남아있다. (아마도 gradle이 증분 빌드를 사용하기 때문인 것으로 추측된다.)
 
 위처럼 설정하면 local 환경에서 API 문서를 서버를 통해 확인할 수 있다.
 
