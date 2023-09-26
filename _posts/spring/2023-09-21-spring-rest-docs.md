@@ -161,7 +161,7 @@ task copyDocument(type: Copy) { // (5)
     into file('src/main/resources/static/docs')  
 }
 
-bootJar {  
+bootJar {  // (6)
     dependsOn asciidoctor  
     doFirst {  
         delete file('static/docs')  
