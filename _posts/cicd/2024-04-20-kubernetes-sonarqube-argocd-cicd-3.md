@@ -14,6 +14,8 @@ header:
 ---
 # ArgoCD 배포하기
 
+![](https://i.imgur.com/rD4aT7s.png)
+
 쿠버네티스 클러스터 구성까지 마쳤다. 이제 GitOps를 실현하는 ArgoCD를 쿠버네티스 클러스터에 배포해보자.
 
 ## ArgoCD 배포

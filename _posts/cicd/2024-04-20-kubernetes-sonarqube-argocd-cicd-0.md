@@ -14,6 +14,9 @@ header:
 ---
 # Kubernetes, ArgoCD, GitHub Action, Sonarqube를 통한 CICD 구축기
 
+![](https://i.imgur.com/rD4aT7s.png)
+
+
 지금까지 여러 프로젝트를 맛보면서 CI/CD를 구축하는 것은 험난한 일이었다.지금까지의 방식은 번잡하며 구축하는 데에 여러 오류를 해결해야 했다.
 
 Jenkins를 이용해 코드를 빌드 및 테스트하고 Jenkins 플러그인을 통해 직접 서버로 SSH 접속 후 Shell Script를 이용해 컨테이너의 Rolling Update를 진행하는 것이었다.

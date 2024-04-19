@@ -14,6 +14,8 @@ header:
 ---
 # GitHub Action을 통해 CICD 해보기
 
+![](https://i.imgur.com/rD4aT7s.png)
+
 이제 CI/CD를 위한 모든 세팅이 끝났다. GitHub Action 스크립트를 작성해 실제로 CI/CD 파이프라인을 작동시키면 된다.
 
 ## Dockerfile 작성

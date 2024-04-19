@@ -14,6 +14,8 @@ header:
 ---
 # Sonarqube 배포하기
 
+![](https://i.imgur.com/rD4aT7s.png)
+
 Sonarqube란 정적 분석을 통해 코드 품질을 높이고, 유지보수를 할 때 도움을 준다. 코드 컨벤션부터 잠재적인 위험 사항까지 체크를 해주어 품질 향상에 도움을 준다.
 
 쿠버네티스 클러스터에 Sonarqube를 배포해보자. Argocd를 설치했으니 GitOps를 통해 Sonarqube를 배포해보자.

@@ -14,6 +14,8 @@ header:
 ---
 # Sonarqube 설정하기
 
+![](https://i.imgur.com/rD4aT7s.png)
+
 Sonarqube가 GitHub Repository에서 작동할 수있게 여러 설정들을 해주어야 한다.
 
 ## GitHub APP 생성

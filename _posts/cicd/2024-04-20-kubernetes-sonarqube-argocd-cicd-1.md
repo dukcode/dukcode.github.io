@@ -14,6 +14,8 @@ header:
 ---
 # UTM에 Ubuntu 20.04 LTS 띄우고 설정하기
 
+![](https://i.imgur.com/rD4aT7s.png)
+
 M2 Mac에 UTM을 통해 Ubuntu 20.04 LTS를 띄우고 추가적인 설정까지 마쳐보자.
 
 ## UTM 설치
