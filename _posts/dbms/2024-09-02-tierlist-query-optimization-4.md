@@ -1,7 +1,7 @@
 ---
 layout: single
 title: "[티어리스트] 쿼리 개선기 - (4) 쿼리 개선"
-categories: cicd
+categories: dbms
 tag: [query-optimization, explain-analyze, mysql, querydsl, querydsl-sql, ngrinder]
 toc: true
 toc_sticky: true

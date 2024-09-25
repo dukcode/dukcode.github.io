@@ -1,7 +1,7 @@
 ---
 layout: single
 title: "[티어리스트] 쿼리 개선기 - (5) 쿼리 개선 적용 및 개선 후 성능 측정"
-categories: cicd
+categories: dbms
 tag: [query-optimization, explain-analyze, mysql, querydsl, querydsl-sql, ngrinder]
 toc: true
 toc_sticky: true

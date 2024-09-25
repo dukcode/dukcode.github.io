@@ -1,7 +1,7 @@
 ---
 layout: single
 title: "[티어리스트] 쿼리 개선기 - (3) 쿼리 실행 계획 분석 및 응답 시간 측정"
-categories: cicd
+categories: dbms
 tag: [query-optimization, explain-analyze, mysql, querydsl, querydsl-sql, ngrinder]
 toc: true
 toc_sticky: true
