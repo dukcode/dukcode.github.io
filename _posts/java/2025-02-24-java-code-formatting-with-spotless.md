@@ -8,16 +8,45 @@ toc_sticky: true
 author_profile: true
 sidebar:
   nav: "docs"
-# header:
-  # teaser: "https://i.imgur.com/pU1QRQv.png"
+header:
+  teaser: "https://opengraph.githubassets.com/63744d41a4fbc55ba003fc14bb25b9039290d4fa1557d33d6eabbbb405ded197/diffplug/spotless"
 # search: false
 ---
 
-# Java 프로젝트에서 Spotless 적용해 코드 포맷팅 자동화하기
+![spotless-image](https://opengraph.githubassets.com/63744d41a4fbc55ba003fc14bb25b9039290d4fa1557d33d6eabbbb405ded197/diffplug/spotless)
 
 팀 프로젝트에서 개발자마다 코드 스타일이 다르면 merge 시 불필요한 충돌이 발생하고, 가독성이 떨어지며, 코드 리뷰 시간이 길어지는 문제가 생긴다. **Spotless**는 Gradle 플러그인을 통해 코드를 자동으로 포맷팅해 일관된 스타일을 유지하고 불필요한 수정 사항을 줄여주는 도구이다.
 
 이 포스트에서 Spotless를 Java 프로젝트에 적용하는 방법과 이를 Git Hook을 통해 강제해 공통된 포맷팅을 유지할 수 있는 방법을 알아보자.
+
+## Spotless vs Checkstyle 비교
+
+Spotless와 Checkstyle은 모두 Java 코드의 스타일을 관리하는 도구이지만, 각각의 특징과 장단점이 있다. 아래의 비교를 통해 Spotless를 선택한 이유를 알아보자.
+
+### 자동 수정 기능
+
+- **Spotless**: Gradle 명령어로 코드를 자동으로 수정. IDE 설정이나 추가 플러그인 없이도 `./gradlew spotlessApply` 만으로 전체 코드베이스의 포맷팅 가능
+- **Checkstyle**: 기본적으로 검사 기능만 제공. 자동 수정을 위해서는 IDE 플러그인 설치나 추가 도구 필요
+
+### 설정 복잡도
+
+- **Spotless**: 간단한 Gradle DSL로 설정 가능. Google Java Format 등 널리 사용되는 포맷터를 즉시 적용 가능
+- **Checkstyle**: XML 기반의 상세한 규칙 설정 필요. 초기 설정이 복잡하고 유지보수에 더 많은 노력 필요
+
+### 확장성
+
+- **Spotless**: Java 외에도 Kotlin, Groovy, JSON, XML 등 다양한 파일 형식 지원. 단일 도구로 프로젝트 전체의 포맷팅 관리 가능
+- **Checkstyle**: Java 코드 검사에 특화. 다른 파일 형식을 처리하려면 추가 도구 필요
+
+### CI/CD 통합
+
+- **Spotless**: `spotlessCheck` 태스크로 검사만 수행하거나, `spotlessApply`로 자동 수정 가능. 파이프라인 구성이 단순
+- **Checkstyle**: 검사 결과 리포트 생성은 쉽지만, 자동 수정을 파이프라인에 통합하기 어려움
+
+### Git Hook 연동
+
+- **Spotless**: pre-commit 훅에서 `spotlessApply` 실행만으로 자동 포맷팅 가능. 추가 도구 설치 불필요
+- **Checkstyle**: 자동 수정을 위해서는 별도의 포맷터나 IDE 설정을 Git Hook과 연동해야 함
 
 ## Spotless 설정 방법
 
