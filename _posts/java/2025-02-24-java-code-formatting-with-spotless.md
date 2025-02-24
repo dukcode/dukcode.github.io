@@ -9,11 +9,11 @@ author_profile: true
 sidebar:
   nav: "docs"
 header:
-  teaser: "https://opengraph.githubassets.com/63744d41a4fbc55ba003fc14bb25b9039290d4fa1557d33d6eabbbb405ded197/diffplug/spotless"
+  teaser: "https://i.imgur.com/ghhO2iQ.png"
 # search: false
 ---
 
-![spotless-image](https://opengraph.githubassets.com/63744d41a4fbc55ba003fc14bb25b9039290d4fa1557d33d6eabbbb405ded197/diffplug/spotless)
+![spotless-image](https://i.imgur.com/ghhO2iQ.png)
 
 팀 프로젝트에서 개발자마다 코드 스타일이 다르면 merge 시 불필요한 충돌이 발생하고, 가독성이 떨어지며, 코드 리뷰 시간이 길어지는 문제가 생긴다. **Spotless**는 Gradle 플러그인을 통해 코드를 자동으로 포맷팅해 일관된 스타일을 유지하고 불필요한 수정 사항을 줄여주는 도구이다.
 
